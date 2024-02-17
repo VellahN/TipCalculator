@@ -1,0 +1,34 @@
+﻿@model MealCostModel
+
+<h2>Tip Calculator</h2>
+
+@using (Html.BeginForm())
+{
+  @Html.AntiForgeryToken()
+
+  <div class="form-group">
+    @Html.LabelFor(m => m.MealCost)
+    @Html.TextBoxFor(m => m.MealCost, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.MealCost)
+  </div>
+
+  <div class="form-group">
+    <label>15% tip:</label>
+    <span class="tip-amount">@Model.Tip15Percent.ToString("C")</span>
+  </div>
+
+  <div class="form-group">
+    <label>20% tip:</label>
+    <span class="tip-amount">@Model.Tip20Percent.ToString("C")</span>
+  </div>
+
+  <div class="form-group">
+    <label>25% tip:</label>
+    <span class="tip-amount">@Model.Tip25Percent.ToString("C")</span>
+  </div>
+
+  <div class="form-group">
+    <input type="submit" value="Calculate" class="btn btn-primary" />
+    <a href="@Url.Action("Index")" class="btn btn-default">Clear</a>
+  </div>
+}
